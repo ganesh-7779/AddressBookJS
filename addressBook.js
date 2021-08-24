@@ -226,3 +226,11 @@ function sortByname(){
     addressBookList.forEach(AddressBook => console.log("Sort By Name:\n"+AddressBook.toString()))
 }
 sortByname();
+
+//UC12 -Sort By State
+    function sortByState(){
+        addressBookList.sort((a, b) => a.state.toLowerCase().localeCompare(b.state.toLowerCase()));
+        console.log("sorted Array:")
+        addressBookList.forEach(AddressBook => console.log("Sort By State:\n"+AddressBook.toString()));
+    }
+    sortByState();
