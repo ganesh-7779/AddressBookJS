@@ -181,3 +181,15 @@ function getSize() {
     console.log("Number of contacts :" + addressBookList.length)
 }
 getSize();
+
+//UC7- ability to ensure there is no duplicate key
+
+function duplicateEntries(){
+    let uInput = prompt("Enter name you want to search for duplicate entry");
+    if(addressBookList.some(s=> s.firstName == uInput)){
+        console.log("contact already exists")
+    }else{
+        console.log("contact not exit");
+    }
+}
+duplicateEntries();
