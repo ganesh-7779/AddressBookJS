@@ -122,7 +122,7 @@ class AddressBook {
             throw 'Invalid email';
         }
     }
-        toString() {
+    toString() {
         return "FirstName : " + this.firstName + "\nLastName : " + this.lastName + "\nAddress :" + this.address +
             "\nCity : " + this.city + "\nState : " + this.state + "\nZip : " + this.zip + "\nPhoneNumber : " + this.phoneNumber +
             "\nemail : " + this.email;
@@ -147,7 +147,7 @@ addContacts();
 
 //UC4 - ability to find exiting contact person using their name
 function searchByName() {
-    let personName = prompt("Enter Person name to find the contact details :")
+    let personName = prompt("Enter Person name to find the contact details : ")
     addressBookList.forEach(element => {
         if (element.firstName == personName) {
             console.log("\nContact Found \n" + element);
@@ -163,18 +163,18 @@ searchByName();
 //UC -5 Delete by first Name.
 
 function deleteByFirstName() {
-    let personName = prompt("Enter Person name to delete contact details :")
+    let personName = prompt("Enter Person name to delete contact details : ")
     addressBookList.forEach(element => {
         if (element.firstName == personName) {
             let index = addressBookList.indexOf(element)
             addressBookList.splice(index)
             console.log("Deleted Successfully" + addressBookList);
-         } else {
+        } else {
             console.log("Contact Not Found");
         }
     })
 }
-deleteByFirstName();
+//deleteByFirstName();
 
 //UC-6 Get size of addressbook
 function getSize() {
@@ -184,12 +184,24 @@ getSize();
 
 //UC7- ability to ensure there is no duplicate key
 
-function duplicateEntries(){
-    let uInput = prompt("Enter name you want to search for duplicate entry");
-    if(addressBookList.some(s=> s.firstName == uInput)){
+function duplicateEntries() {
+    let uInput = prompt("Enter name you want to search for duplicate entry : ");
+    if (addressBookList.some(s => s.firstName == uInput)) {
         console.log("contact already exists")
-    }else{
+    } else {
         console.log("contact not exit");
     }
 }
 duplicateEntries();
+
+// UC8 - Ability to Search Contact in City
+function searchByCityOrState(){
+    let searchByCity = prompt("Enter City to search:");
+    let SearchByState = prompt("Enter State to Serach:");
+    addressBookList.forEach(addressBook => {
+    if(addressBook.city == searchByCity && addressBook.state == SearchByState){
+        console.log("Perosn City and State : " + searchByCity + " and " + SearchByState);
+    }
+    })
+}
+searchByCityOrState();
