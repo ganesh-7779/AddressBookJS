@@ -1,9 +1,12 @@
+
 /*
  *Purpose: Address Book System Program using JavaScript.
  *@auther: Ganesh Gavhad
  *@since : 23.08.2021
  */
 console.log("Welcome to the AddressBookService")
+let addressBookList = Array();
+const prompt = require('Prompt-sync')();
 class AddressBook {
     firstName;
     lastName;
@@ -126,23 +129,34 @@ class AddressBook {
             "\nemail : " + this.email;
     }
 }
+
 console.log("\nAdd Contacts")
-
-let addressBook1 = new AddressBook("Ganesh", "Gavhad", "Badnapur", "Jalna", "Maharashtra", 431202, 9139124143, "ganesh@gmail.com");
-let addressBook2 = new AddressBook("Akash", "Thakur", "Panshir", "Auranga", "Maharashtra", 411023, 9855642456, "akash@gmail.com");
-let addressBook3 = new AddressBook("Sachin", "Pawar", "Haveli", "Nager", "Maharashtra", 454641, 9587641212, "sachin@gmail.com");
-
-//UC2 - Ability to ensure valid contavts are added.
-
-try {
-    addressBook1.fName = "ne";
-    console.log(addressBook1.toString());
-} catch (e) {
-    console.error(e);
+function addContacts() {
+    let fName=prompt("Enter First Name :");
+    let lName=prompt("Enter Last Name :");
+    let address=prompt("Enter Address: ");
+    let city = prompt("Enter City :");
+    let state = prompt("Enter State :");
+    let zip = prompt("Enter zip :");
+    let phone = prompt("Enter Phone Number :");
+    let email = prompt("Enter Email :");
+    let person = new AddressBook(fName,lName,address,city,state,zip,phone,email);
+    addressBookList.push(person);
 }
+addContacts();
 
-//UC3 - Ability to create a new address book array and add new contacts to it
- 
-let addressBookList = Array();
-addressBookList.push(addressBook1, addressBook2, addressBook3);
-console.log(addressBookList);
+
+//UC4 - ability to find exiting contact person using their name
+function searchByName() {
+    let personName = prompt("Enter Person name to find the contact details :")
+    addressBookList.forEach(element => {
+        if (element.firstName == personName) {
+            console.log("\nContact Found \n"+ element);
+        }
+        else {
+            console.log("Incurrect First Name Please enter valid");
+        }
+    }
+    )
+}
+searchByName();
