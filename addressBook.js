@@ -218,3 +218,11 @@ let searchByCity = prompt("Enter City to search:");
 let searchByState = prompt("Enter State to Serach:");
 console.log("number of Person in city " +countByCity(searchByCity));
 console.log("number of Person in state " +countByState(searchByState));
+
+//UC11 - Sort By Name
+function sortByname(){
+    addressBookList.sort((a, b) => a.firstName.toLowerCase().localeCompare(b.firstName.toLowerCase()));
+    console.log("sorted Array:")
+    addressBookList.forEach(AddressBook => console.log("Sort By Name:\n"+AddressBook.toString()))
+}
+sortByname();
