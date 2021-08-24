@@ -160,3 +160,19 @@ function searchByName() {
     )
 }
 searchByName();
+
+//UC -5 Delete by first Name.
+
+function deleteByFirstName(){
+    let personName = prompt("Enter Person name to delete contact details :")
+    addressBookList.forEach (element => {
+        if(element.firstName == personName){
+            let index = addressBookList.indexOf(element)
+            addressBookList.splice(index)
+            console.log("Deleted Successfully"+ addressBookList);
+        } else{
+            console.log("Contact Not Found");
+        }
+    })
+}
+deleteByFirstName();
