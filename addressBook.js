@@ -197,11 +197,24 @@ duplicateEntries();
 // UC8 - Ability to Search Contact in City
 function searchByCityOrState(){
     let searchByCity = prompt("Enter City to search:");
-    let SearchByState = prompt("Enter State to Serach:");
+    let searchByState = prompt("Enter State to Serach:");
     addressBookList.forEach(addressBook => {
-    if(addressBook.city == searchByCity && addressBook.state == SearchByState){
-        console.log("Perosn City and State : " + searchByCity + " and " + SearchByState);
+    if(addressBook.city == searchByCity && addressBook.state == searchByState){
+        console.log("Perosn City and State : " + searchByCity + " and " + searchByState);
     }
     })
+    let filterBook = addressBookList.filter(addressBook => addressBook.city == searchByCity && addressBook.state == searchByState)
+    console.log(filterBook);
 }
 searchByCityOrState();
+//UC10
+function countByCity(city) {
+    return addressBookList.filter(contact => contact.city == city).reduce((count, contact) => count += 1, 0);
+}
+function countByState(state) {
+    return addressBookList.filter(contact => contact.state == state).reduce((count, contact) => count += 1, 0)
+}
+let searchByCity = prompt("Enter City to search:");
+let searchByState = prompt("Enter State to Serach:");
+console.log("number of Person in city " +countByCity(searchByCity));
+console.log("number of Person in state " +countByState(searchByState));
