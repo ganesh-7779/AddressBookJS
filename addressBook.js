@@ -122,8 +122,7 @@ class AddressBook {
             throw 'Invalid email';
         }
     }
-
-    toString() {
+        toString() {
         return "FirstName : " + this.firstName + "\nLastName : " + this.lastName + "\nAddress :" + this.address +
             "\nCity : " + this.city + "\nState : " + this.state + "\nZip : " + this.zip + "\nPhoneNumber : " + this.phoneNumber +
             "\nemail : " + this.email;
@@ -132,15 +131,15 @@ class AddressBook {
 
 console.log("\nAdd Contacts")
 function addContacts() {
-    let fName=prompt("Enter First Name :");
-    let lName=prompt("Enter Last Name :");
-    let address=prompt("Enter Address: ");
+    let fName = prompt("Enter First Name :");
+    let lName = prompt("Enter Last Name :");
+    let address = prompt("Enter Address: ");
     let city = prompt("Enter City :");
     let state = prompt("Enter State :");
     let zip = prompt("Enter zip :");
     let phone = prompt("Enter Phone Number :");
     let email = prompt("Enter Email :");
-    let person = new AddressBook(fName,lName,address,city,state,zip,phone,email);
+    let person = new AddressBook(fName, lName, address, city, state, zip, phone, email);
     addressBookList.push(person);
 }
 addContacts();
@@ -151,7 +150,7 @@ function searchByName() {
     let personName = prompt("Enter Person name to find the contact details :")
     addressBookList.forEach(element => {
         if (element.firstName == personName) {
-            console.log("\nContact Found \n"+ element);
+            console.log("\nContact Found \n" + element);
         }
         else {
             console.log("Incurrect First Name Please enter valid");
@@ -160,3 +159,37 @@ function searchByName() {
     )
 }
 searchByName();
+
+//UC -5 Delete by first Name.
+
+function deleteByFirstName() {
+    let personName = prompt("Enter Person name to delete contact details :")
+    addressBookList.forEach(element => {
+        if (element.firstName == personName) {
+            let index = addressBookList.indexOf(element)
+            addressBookList.splice(index)
+            console.log("Deleted Successfully" + addressBookList);
+         } else {
+            console.log("Contact Not Found");
+        }
+    })
+}
+deleteByFirstName();
+
+//UC-6 Get size of addressbook
+function getSize() {
+    console.log("Number of contacts :" + addressBookList.length)
+}
+getSize();
+
+//UC7- ability to ensure there is no duplicate key
+
+function duplicateEntries(){
+    let uInput = prompt("Enter name you want to search for duplicate entry");
+    if(addressBookList.some(s=> s.firstName == uInput)){
+        console.log("contact already exists")
+    }else{
+        console.log("contact not exit");
+    }
+}
+duplicateEntries();
